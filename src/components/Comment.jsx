@@ -4,30 +4,33 @@ import Form from "./Form";
 
 function repliesReducer() {}
 
-const Comment = () => {
+// {
+//   "id": ":r2:",
+//   "votes": 0,
+//   "content": "lorem ipsum comment comment kek di yutb gitu gitu lah",
+//   "replies": [
+//       {
+//           "id": ":r3:",
+//           "votes": 0,
+//           "reply": "lorem ipsum reply replyan",
+//           "replies": []
+//       }
+//   ]
+// }
+
+const Comment = ({ comment }) => {
+  console.log("comment :>> ", comment);
   const [replyIsOpen, setReplyIsOpen] = useState(false);
-  const [replies, updateReplies] = useReducer(repliesReducer, [
-    {
-      votes: 0,
-      reply: "lorem ipsum reply replyan",
-      replies: [],
-    },
-    {
-      votes: 0,
-      reply: "lorem ipsum reply replyan",
-      replies: [],
-    },
-  ]);
+  const [replies, updateReplies] = useReducer(repliesReducer, comment.replies);
 
   const replyHandler = (reply) => {
     setReplyIsOpen(reply);
   };
 
   return (
-    <div className="grid gap-4">
-      <CommentCard type="comment" onReply={replyHandler}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-        quam vero molestiae repudiandae dolore obcaecati odit, exercitationem.
+    <div id={comment.id} className="grid gap-4">
+      <CommentCard votes={comment.votes} type="comment" onReply={replyHandler}>
+        {comment.content}
       </CommentCard>
 
       {replyIsOpen && <Form placeholder={"Add a reply..."} />}

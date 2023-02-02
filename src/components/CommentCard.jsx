@@ -4,8 +4,8 @@ import iconReply from "../assets/images/icon-reply.svg";
 import iconDelete from "../assets/images/icon-delete.svg";
 import Button from "./Button";
 
-const CommentCard = ({ type, onReply, children }) => {
-  const [vote, setVote] = useState(0);
+const CommentCard = ({ votes, type, onReply, children }) => {
+  const [vote, setVote] = useState(votes);
   const [reply, setReply] = useState(false);
 
   const upVoteHandler = () => {
