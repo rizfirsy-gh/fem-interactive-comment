@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState } from "react";
 import amyrobson from "../assets/images/avatars/image-amyrobson.webp";
 import iconReply from "../assets/images/icon-reply.svg";
 import Button from "./Button";
@@ -25,17 +25,25 @@ const CommentCard = ({ onReply, children }) => {
   };
 
   return (
-    <div className="rounded-lg bg-white p-4 max-w-xl text-grayishblue flex gap-4">
-      <div className="vote text-moderateblue p-4 bg-lightgray rounded-md flex flex-col justify-between items-center h-fit">
-        <button type="button" onClick={upVoteHandler}>
+    <div className="w-full rounded-lg bg-white p-4 text-grayishblue flex gap-4">
+      <div className="vote text-moderateblue bg-lightgray rounded-md flex flex-col justify-between items-center h-fit">
+        <button
+          type="button"
+          onClick={upVoteHandler}
+          className="py-2 px-4 cursor-pointer"
+        >
           +
         </button>
-        <p className="font-bold">{vote}</p>
-        <button type="button" onClick={downVoteHandler}>
+        <p className="font-bold py-2 px-4">{vote}</p>
+        <button
+          type="button"
+          onClick={downVoteHandler}
+          className="py-2 px-4 cursor-pointer"
+        >
           -
         </button>
       </div>
-      <div>
+      <div className="w-full">
         <div>
           <div className="user flex justify-between items-center">
             <div className="profile flex justify-start items-center gap-2">

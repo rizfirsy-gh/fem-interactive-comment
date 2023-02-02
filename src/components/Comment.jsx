@@ -12,6 +12,11 @@ const Comment = () => {
       reply: "lorem ipsum reply replyan",
       replies: [],
     },
+    {
+      votes: 0,
+      reply: "lorem ipsum reply replyan",
+      replies: [],
+    },
   ]);
 
   const replyHandler = (reply) => {
@@ -26,8 +31,9 @@ const Comment = () => {
       </CommentCard>
 
       {replyIsOpen && <Form placeholder={"Add a reply..."} />}
-      <div className="reply-container">
-        <ul>
+      <div className="reply-container flex w-full">
+        <div className="h-auto vertical-line"></div>
+        <ul className="w-full grid gap-4">
           {replies &&
             replies.map((reply, index) => (
               <li key={index}>

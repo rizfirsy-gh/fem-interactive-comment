@@ -22,3 +22,8 @@ button,
 textarea {
   all: unset;
 }
+
+.vertical-line {
+  width: 2px;
+  @apply mx-8 bg-lightgray;
+}

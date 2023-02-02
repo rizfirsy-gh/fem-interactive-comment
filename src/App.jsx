@@ -4,8 +4,8 @@ import Form from "./components/Form";
 
 function App() {
   return (
-    <section className="w-screen h-full bg-lightgray">
-      <div className=" m-auto min-h-screen grid place-items-center max-w-xl">
+    <section className="w-screen h-screen bg-verylightgray grid place-items-center">
+      <div className="m-auto grid place-items-center gap-4 max-w-2xl">
         <ul>
           <li>
             <Comment />
