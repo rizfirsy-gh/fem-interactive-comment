@@ -25,7 +25,7 @@ const Comment = () => {
 
   return (
     <div className="grid gap-4">
-      <CommentCard onReply={replyHandler}>
+      <CommentCard type="comment" onReply={replyHandler}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
         quam vero molestiae repudiandae dolore obcaecati odit, exercitationem.
       </CommentCard>
@@ -37,7 +37,7 @@ const Comment = () => {
           {replies &&
             replies.map((reply, index) => (
               <li key={index}>
-                <CommentCard>{reply.reply}</CommentCard>
+                <CommentCard type="reply">{reply.reply}</CommentCard>
               </li>
             ))}
         </ul>

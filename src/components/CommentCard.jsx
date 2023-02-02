@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import amyrobson from "../assets/images/avatars/image-amyrobson.webp";
 import iconReply from "../assets/images/icon-reply.svg";
+import iconDelete from "../assets/images/icon-delete.svg";
 import Button from "./Button";
 
-const CommentCard = ({ onReply, children }) => {
+const CommentCard = ({ type, onReply, children }) => {
   const [vote, setVote] = useState(0);
   const [reply, setReply] = useState(false);
 
@@ -51,10 +52,18 @@ const CommentCard = ({ onReply, children }) => {
               <span className="font-bold text-darkblue">amyrobson</span>
               <span>1 month ago</span>
             </div>
-            <Button onClick={replyHandler}>
-              <img src={iconReply} />
-              <span>Reply</span>
-            </Button>
+            {type !== "reply" && (
+              <Button onClick={replyHandler}>
+                <img src={iconReply} />
+                <span>Reply</span>
+              </Button>
+            )}
+            {type === "reply" && (
+              <Button onClick={replyHandler}>
+                <img src={iconDelete} />
+                <span className="text-softred">Delete</span>
+              </Button>
+            )}
           </div>
         </div>
         <p className="comment mt-4">{children}</p>
