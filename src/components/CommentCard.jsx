@@ -20,7 +20,6 @@ const CommentCard = ({ type, onReply, children }) => {
   };
 
   const replyHandler = () => {
-    console.log("reply", reply);
     setReply(!reply);
     onReply(reply);
   };
@@ -54,8 +53,27 @@ const CommentCard = ({ type, onReply, children }) => {
             </div>
             {type !== "reply" && (
               <Button onClick={replyHandler}>
-                <img src={iconReply} />
-                <span>Reply</span>
+                {!reply ? (
+                  <img
+                    src={iconReply}
+                    style={{
+                      display: "none",
+                    }}
+                  />
+                ) : (
+                  <img
+                    src={iconReply}
+                    style={{
+                      display: "block",
+                    }}
+                  />
+                )}
+
+                {!reply ? (
+                  <span className="text-softred">Cancel reply</span>
+                ) : (
+                  <span>Reply</span>
+                )}
               </Button>
             )}
             {type === "reply" && (
