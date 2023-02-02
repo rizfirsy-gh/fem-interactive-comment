@@ -1,20 +1,19 @@
 import "./App.css";
-import CommentCard from "./components/CommentCard";
+import Comment from "./components/Comment";
+import Form from "./components/Form";
 
 function App() {
   return (
-    <div className="App bg-lightgray min-h-screen grid place-items-center">
-      <ul>
-        <li>
-          <CommentCard>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit quam vero molestiae repudiandae dolore obcaecati odit,
-            exercitationem, quod necessitatibus, nobis in recusandae. Modi magni
-            minus voluptatem dicta eius id minima?
-          </CommentCard>
-        </li>
-      </ul>
-    </div>
+    <section className="w-screen h-full bg-lightgray">
+      <div className=" m-auto min-h-screen grid place-items-center max-w-xl">
+        <ul>
+          <li>
+            <Comment />
+          </li>
+        </ul>
+        <Form placeholder={"Add a comment..."} />
+      </div>
+    </section>
   );
 }
 

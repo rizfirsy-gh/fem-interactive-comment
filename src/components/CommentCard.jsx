@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import amyrobson from "../assets/images/avatars/image-amyrobson.webp";
 import iconReply from "../assets/images/icon-reply.svg";
+import Button from "./Button";
 
-const CommentCard = ({ children }) => {
+const CommentCard = ({ onReply, children }) => {
   const [vote, setVote] = useState(0);
+  const [reply, setReply] = useState(false);
 
   const upVoteHandler = () => {
     setVote((prev) => (prev += 1));
@@ -14,6 +16,12 @@ const CommentCard = ({ children }) => {
       return;
     }
     setVote((prev) => (prev -= 1));
+  };
+
+  const replyHandler = () => {
+    console.log("reply", reply);
+    setReply(!reply);
+    onReply(reply);
   };
 
   return (
@@ -35,10 +43,10 @@ const CommentCard = ({ children }) => {
               <span className="font-bold text-darkblue">amyrobson</span>
               <span>1 month ago</span>
             </div>
-            <button className="button text-moderateblue font-bold flex justify-center items-center gap-2">
+            <Button onClick={replyHandler}>
               <img src={iconReply} />
               <span>Reply</span>
-            </button>
+            </Button>
           </div>
         </div>
         <p className="comment mt-4">{children}</p>
