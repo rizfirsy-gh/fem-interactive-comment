@@ -2,24 +2,8 @@ import React, { useReducer, useState } from "react";
 import CommentCard from "./CommentCard";
 import Form from "./Form";
 
-function repliesReducer() {}
-
-// {
-//   "id": ":r2:",
-//   "votes": 0,
-//   "content": "lorem ipsum comment comment kek di yutb gitu gitu lah",
-//   "replies": [
-//       {
-//           "id": ":r3:",
-//           "votes": 0,
-//           "reply": "lorem ipsum reply replyan",
-//           "replies": []
-//       }
-//   ]
-// }
-
 const Comment = ({ comment }) => {
-  console.log("comment :>> ", comment);
+  useReducer(repliesReducer, []);
   const [replyIsOpen, setReplyIsOpen] = useState(false);
   const [replies, updateReplies] = useState(comment.replies);
 
