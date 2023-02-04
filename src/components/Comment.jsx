@@ -21,7 +21,9 @@ function repliesReducer() {}
 const Comment = ({ comment }) => {
   console.log("comment :>> ", comment);
   const [replyIsOpen, setReplyIsOpen] = useState(false);
-  const [replies, updateReplies] = useReducer(repliesReducer, comment.replies);
+  const [replies, updateReplies] = useState(comment.replies);
+
+  console.log("reply votes", replies[0].votes);
 
   const replyHandler = (reply) => {
     setReplyIsOpen(reply);
@@ -40,7 +42,9 @@ const Comment = ({ comment }) => {
           {replies &&
             replies.map((reply, index) => (
               <li key={index}>
-                <CommentCard type="reply">{reply.reply}</CommentCard>
+                <CommentCard votes={reply.votes} type="reply">
+                  {reply.reply}
+                </CommentCard>
               </li>
             ))}
         </ul>
