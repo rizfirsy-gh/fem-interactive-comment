@@ -9,6 +9,7 @@ const Form = ({ placeholder, onSubmit }) => {
   const addCommentHandler = (ev) => {
     ev.preventDefault();
     onSubmit(newComment);
+    setNewComment((prev) => (prev = ""));
   };
 
   const newCommentHandler = ({ currentTarget }) => {

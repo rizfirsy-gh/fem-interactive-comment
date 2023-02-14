@@ -4,10 +4,9 @@ import Form from "./Form";
 
 const Comment = ({ comment }) => {
   const [replyIsOpen, setReplyIsOpen] = useState(false);
-  console.log("comment", comment);
 
-  const replyHandler = (reply) => {
-    setReplyIsOpen(reply);
+  const replyHandler = () => {
+    setReplyIsOpen(!replyIsOpen);
   };
 
   return (
@@ -16,15 +15,15 @@ const Comment = ({ comment }) => {
         {comment.text}
       </CommentCard>
 
-      {replyIsOpen && <Form placeholder={"Add a reply..."} />}
       <div className="reply-container flex w-full">
         <div className="h-auto vertical-line"></div>
         <ul className="w-full grid gap-4">
-          {comment.replies &&
+          {replyIsOpen && <Form placeholder={"Add a reply..."} />}
+          {comment.replies.length > 0 &&
             comment.replies.map((reply, index) => (
               <li key={index}>
                 <CommentCard votes={reply.votes} type="reply">
-                  {reply.reply}
+                  {reply.text}
                 </CommentCard>
               </li>
             ))}

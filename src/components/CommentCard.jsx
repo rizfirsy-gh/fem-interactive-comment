@@ -9,7 +9,9 @@ const CommentCard = ({ votes, type, onReply, children }) => {
 
   const downVoteHandler = () => {};
 
-  const replyHandler = () => {};
+  const replyHandler = () => {
+    onReply();
+  };
 
   return (
     <div className="w-full rounded-lg bg-white p-4 text-grayishblue flex gap-4">
@@ -42,37 +44,24 @@ const CommentCard = ({ votes, type, onReply, children }) => {
               <span className="font-bold text-darkblue">amyrobson</span>
               <span>1 month ago</span>
             </div>
-            {/* {type !== "reply" && (
+            {type !== "reply" && (
               <Button onClick={replyHandler}>
-                {!reply ? (
-                  <img
-                    src={iconReply}
-                    style={{
-                      display: "none",
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={iconReply}
-                    style={{
-                      display: "block",
-                    }}
-                  />
-                )}
-
-                {!reply ? (
-                  <span className="text-softred">Cancel reply</span>
-                ) : (
-                  <span>Reply</span>
-                )}
+                <img
+                  src={iconReply}
+                  style={{
+                    display: "block",
+                  }}
+                />
+                <span>Reply</span>
               </Button>
             )}
+
             {type === "reply" && (
               <Button onClick={replyHandler}>
                 <img src={iconDelete} />
                 <span className="text-softred">Delete</span>
               </Button>
-            )} */}
+            )}
           </div>
         </div>
         <p className="comment mt-4">{children}</p>
