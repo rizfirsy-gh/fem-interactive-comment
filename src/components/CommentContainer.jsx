@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import CommentCard from "./CommentCard";
 import Form from "./Form";
 
-const Comment = ({ comment }) => {
+const CommentContainer = ({ comment, upVotesHandler, downVotesHandler }) => {
   const [replyIsOpen, setReplyIsOpen] = useState(false);
 
   const replyHandler = () => {
     setReplyIsOpen(!replyIsOpen);
   };
 
+  const votesHandler = () => {
+    votesHandler();
+  };
+
   return (
     <div id={comment.id} className="grid gap-4">
-      <CommentCard votes={comment.votes} type="comment" onReply={replyHandler}>
+      <CommentCard votes={comment.votes} type="comment">
         {comment.text}
       </CommentCard>
 
@@ -22,7 +27,11 @@ const Comment = ({ comment }) => {
           {comment.replies.length > 0 &&
             comment.replies.map((reply, index) => (
               <li key={index}>
-                <CommentCard votes={reply.votes} type="reply">
+                <CommentCard
+                  votes={reply.votes}
+                  onVotes={votesHandler}
+                  type="reply"
+                >
                   {reply.text}
                 </CommentCard>
               </li>
@@ -33,4 +42,4 @@ const Comment = ({ comment }) => {
   );
 };
 
-export default Comment;
+export default CommentContainer;

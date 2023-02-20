@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  upVotesComments,
+  downVotesComments,
+} from "../states/features/commentsSlice";
 import amyrobson from "../assets/images/avatars/image-amyrobson.webp";
 import iconReply from "../assets/images/icon-reply.svg";
 import iconDelete from "../assets/images/icon-delete.svg";
 import Button from "./Button";
 
-const CommentCard = ({ votes, type, onReply, children }) => {
-  const upVoteHandler = () => {};
+const CommentCard = ({ votes, type, children }) => {
+  const dispatchUpVotes = useDispatch();
+  const dispatchDownVotes = useDispatch();
 
-  const downVoteHandler = () => {};
-
-  const replyHandler = () => {
-    onReply();
+  const upVotesHandler = () => {
+    dispatchUpVotes(upVotesComments("upvote"));
   };
+
+  const downVotesHandler = () => {
+    dispatchDownVotes(downVotesComments("upvote"));
+  };
+
+  const replyHandler = () => {};
 
   return (
     <div className="w-full rounded-lg bg-white p-4 text-grayishblue flex gap-4">
@@ -19,7 +29,7 @@ const CommentCard = ({ votes, type, onReply, children }) => {
       <div className="vote text-moderateblue bg-lightgray rounded-md flex flex-col justify-between items-center h-fit">
         <button
           type="button"
-          onClick={upVoteHandler}
+          onClick={upVotesHandler}
           className="py-2 px-4 cursor-pointer"
         >
           +
@@ -27,7 +37,7 @@ const CommentCard = ({ votes, type, onReply, children }) => {
         <p className="font-bold py-2 px-4">{votes}</p>
         <button
           type="button"
-          onClick={downVoteHandler}
+          onClick={downVotesHandler}
           className="py-2 px-4 cursor-pointer"
         >
           -
