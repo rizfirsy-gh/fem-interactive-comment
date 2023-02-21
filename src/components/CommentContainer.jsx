@@ -16,7 +16,7 @@ const CommentContainer = ({ comment, upVotesHandler, downVotesHandler }) => {
 
   return (
     <div id={comment.id} className="grid gap-4">
-      <CommentCard votes={comment.votes} type="comment">
+      <CommentCard commentId={comment.id} votes={comment.votes} type="comment">
         {comment.text}
       </CommentCard>
 

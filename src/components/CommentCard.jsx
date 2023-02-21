@@ -9,16 +9,16 @@ import iconReply from "../assets/images/icon-reply.svg";
 import iconDelete from "../assets/images/icon-delete.svg";
 import Button from "./Button";
 
-const CommentCard = ({ votes, type, children }) => {
+const CommentCard = ({ votes, type, children, commentId }) => {
   const dispatchUpVotes = useDispatch();
   const dispatchDownVotes = useDispatch();
 
   const upVotesHandler = () => {
-    dispatchUpVotes(upVotesComments("upvote"));
+    dispatchUpVotes(upVotesComments(commentId));
   };
 
   const downVotesHandler = () => {
-    dispatchDownVotes(downVotesComments("upvote"));
+    dispatchDownVotes(downVotesComments(commentId));
   };
 
   const replyHandler = () => {};
