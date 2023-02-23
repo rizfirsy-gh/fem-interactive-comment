@@ -9,7 +9,13 @@ import iconReply from "../assets/images/icon-reply.svg";
 import iconDelete from "../assets/images/icon-delete.svg";
 import Button from "./Button";
 
-const CommentCard = ({ votes, type, children, commentId }) => {
+const CommentCard = ({
+  votes,
+  type,
+  children,
+  commentId,
+  onReplyBtnHandler,
+}) => {
   const dispatchUpVotes = useDispatch();
   const dispatchDownVotes = useDispatch();
 
@@ -21,7 +27,9 @@ const CommentCard = ({ votes, type, children, commentId }) => {
     dispatchDownVotes(downVotesComments(commentId));
   };
 
-  const replyHandler = () => {};
+  const replyBtnHandler = () => {
+    onReplyBtnHandler();
+  };
 
   return (
     <div className="w-full rounded-lg bg-white p-4 text-grayishblue flex gap-4">
@@ -55,7 +63,7 @@ const CommentCard = ({ votes, type, children, commentId }) => {
               <span>1 month ago</span>
             </div>
             {type !== "reply" && (
-              <Button onClick={replyHandler}>
+              <Button onClick={replyBtnHandler}>
                 <img
                   src={iconReply}
                   style={{
