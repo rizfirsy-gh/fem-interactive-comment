@@ -46,7 +46,7 @@ const CommentContainer = ({ comment }) => {
           {replyIsOpen && (
             <Form placeholder={"Add a reply..."} onSubmit={onAddReply} />
           )}
-          {/* {reply.map((reply, index) => (
+          {comment.replies.map((reply, index) => (
             <li key={index}>
               <CommentCard
                 votes={reply.votes}
@@ -56,7 +56,7 @@ const CommentContainer = ({ comment }) => {
                 {reply.text}
               </CommentCard>
             </li>
-          ))} */}
+          ))}
         </ul>
       </div>
     </div>

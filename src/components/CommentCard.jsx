@@ -73,13 +73,13 @@ const CommentCard = ({
                 <span>Reply</span>
               </Button>
             )}
-
+            {/* 
             {type === "reply" && (
               <Button onClick={replyHandler}>
                 <img src={iconDelete} />
                 <span className="text-softred">Delete</span>
               </Button>
-            )}
+            )} */}
           </div>
         </div>
         <p className="comment mt-4">{children}</p>
