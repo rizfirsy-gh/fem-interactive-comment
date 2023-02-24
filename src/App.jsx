@@ -3,7 +3,7 @@ import uniqid from "uniqid";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import CommentContainer from "./components/CommentContainer";
-import Form from "./components/Form";
+import CommentForm from "./components/CommentForm";
 import { addComment } from "./states/features/commentsSlice";
 
 function App() {
@@ -33,7 +33,10 @@ function App() {
               </li>
             ))}
         </ul>
-        <Form placeholder={"Add a comment..."} onSubmit={addCommentHandler} />
+        <CommentForm
+          placeholder={"Add a comment..."}
+          onSubmit={addCommentHandler}
+        />
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import amyrobson from "../assets/images/avatars/image-amyrobson.webp";
 import Button from "./Button";
 
-const Form = ({ placeholder, onSubmit }) => {
+const CommentForm = ({ placeholder, onSubmit }) => {
   const [newComment, setNewComment] = useState("");
   const refComment = useRef();
 
@@ -34,4 +34,4 @@ const Form = ({ placeholder, onSubmit }) => {
   );
 };
 
-export default Form;
+export default CommentForm;

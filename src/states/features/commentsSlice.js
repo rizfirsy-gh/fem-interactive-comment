@@ -12,8 +12,6 @@ const commentsSlice = createSlice({
       state.comments.push(action.payload);
     },
     addReply: (state, action) => {
-      console.log("payload", action.payload.commentId);
-      console.log("payload", action.payload.replyId);
       const filtered = state.comments
         .filter((comment) => comment.id === action.payload.commentId)
         .map((filter) => {
@@ -38,10 +36,37 @@ const commentsSlice = createSlice({
           if (filter.votes >= 1) filter.votes -= 1;
         });
     },
+    upVotesReply: (state, action) => {
+      console.log("action upvotes reply", action.payload);
+      const filtered = state.comments
+        .filter((comment) => comment.id === action.payload.commentId)
+        .map((reply) => {
+          reply.replies.filter((reply) => reply.id === action.payload.replyId);
+        });
+
+      console.log("filtered", filtered.replyId);
+    },
+    downVotesReply: (state, action) => {
+      const filteredComment = state.comments.filter(
+        (comment) => comment.id === action.payload.commentId
+      );
+
+      const filteredReply = filteredComment
+        .filter((comment) => comment.id === action.payload.replyId)
+        .map((filter) => {
+          if (filter.votes >= 1) filter.votes -= 1;
+        });
+    },
   },
 });
 
-export const { addComment, addReply, upVotesComments, downVotesComments } =
-  commentsSlice.actions;
+export const {
+  addComment,
+  addReply,
+  upVotesComments,
+  downVotesComments,
+  upVotesReply,
+  downVotesReply,
+} = commentsSlice.actions;
 
 export default commentsSlice.reducer;
