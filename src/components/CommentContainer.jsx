@@ -5,15 +5,9 @@ import { addReply } from "../states/features/commentsSlice";
 import CommentCard from "./CommentCard";
 import Form from "./Form";
 
-const CommentContainer = ({ comment, upVotesHandler, downVotesHandler }) => {
+const CommentContainer = ({ comment }) => {
   const [replyIsOpen, setReplyIsOpen] = useState(false);
-  const comments = useSelector((state) => state.comments.comments);
   const dispatchReply = useDispatch();
-
-  console.log(
-    "comments",
-    comments.map((comment) => comment.replies)
-  );
 
   const replyHandler = () => {
     setReplyIsOpen(!replyIsOpen);
@@ -23,7 +17,8 @@ const CommentContainer = ({ comment, upVotesHandler, downVotesHandler }) => {
     const generateId = uniqid();
     dispatchReply(
       addReply({
-        id: generateId,
+        commentId: comment.id,
+        replyId: generateId,
         text: newComment,
         votes: 0,
       })

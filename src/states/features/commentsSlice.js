@@ -12,11 +12,16 @@ const commentsSlice = createSlice({
       state.comments.push(action.payload);
     },
     addReply: (state, action) => {
-      console.log("payload", action.payload);
+      console.log("payload", action.payload.commentId);
+      console.log("payload", action.payload.replyId);
       const filtered = state.comments
-        .filter((comment) => comment.id === action.payload.id)
+        .filter((comment) => comment.id === action.payload.commentId)
         .map((filter) => {
-          filter.reply.push(action.payload);
+          filter.replies.push({
+            replyId: action.payload.replyId,
+            text: action.payload.text,
+            votes: 0,
+          });
         });
     },
     upVotesComments: (state, action) => {
